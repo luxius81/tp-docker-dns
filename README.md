@@ -81,10 +81,10 @@ Bash
 ## 7. Detencion y limpieza
 Para detener la infraestructura y limpiar los recursos generados:
     # Detener los contenedores y remover la red interna
-        docker compose down
+        sudo docker compose down
 
     # Eliminar imágenes locales generadas (incluyendo la del Reporter)
-        docker compose down --rmi local
+        sudo docker compose down --rmi local
 
     # Borrar la carpeta de datos persistentes de Pi-hole (requiere sudo por permisos de Docker)
         sudo rm -rf etc-pihole
