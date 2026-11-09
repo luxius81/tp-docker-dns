@@ -38,8 +38,15 @@ def index():
                 summary_res = requests.get(f"{PIHOLE_URL}/api/stats/summary", headers=headers, timeout=5)
 
         stats = summary_res.json() if summary_res.status_code == 200 else {}
-    except Exception:
+    except Exception as e:
+        print(f"Error al obtener métricas: {e}")
         stats = {}
+
+    # Extraer métricas desde el objeto 'queries' de Pi-hole v6
+    queries = stats.get("queries", {})
+    total_queries = queries.get("total", "Sin datos")
+    blocked_queries = queries.get("blocked", "Sin datos")
+    percent_blocked = queries.get("percent_blocked", 0.0)
 
     html_template = """
     <!doctype html>
@@ -57,20 +64,25 @@ def index():
         <h1>Panel de Métricas - Pi-hole & Unbound</h1>
         <div class="card">
             <h3>Consultas Totales</h3>
-            <p>{{ stats.get('dns_queries_today', 'Sin datos') }}</p>
+            <p>{{ total_queries }}</p>
         </div>
         <div class="card">
             <h3>Consultas Bloqueadas</h3>
-            <p>{{ stats.get('ads_blocked_today', 'Sin datos') }}</p>
+            <p>{{ blocked_queries }}</p>
         </div>
         <div class="card">
             <h3>Porcentaje Bloqueado</h3>
-            <p>{{ "%.2f"|format(stats.get('ads_percentage_today', 0)) }}%</p>
+            <p>{{ "%.2f"|format(percent_blocked) }}%</p>
         </div>
     </body>
     </html>
     """
-    return render_template_string(html_template, stats=stats)
+    return render_template_string(
+        html_template,
+        total_queries=total_queries,
+        blocked_queries=blocked_queries,
+        percent_blocked=percent_blocked
+    )
 
 @app.route("/health")
 def health():

@@ -1,8 +1,12 @@
 services:
   unbound:
     image: mvance/unbound:1.22.0 # fijo la versión a esta
+    container_name: tp-docker-dns-unbound-1
     volumes:
       - ./unbound/unbound.conf:/opt/unbound/etc/unbound/unbound.conf:ro
+      - ./unbound/var:/opt/unbound/etc/unbound/var
+    healthcheck:
+      disable: true
     ports:
       - "127.0.0.1:5335:5335/tcp"       # solo para probar con dig desde la VM
       - "127.0.0.1:5335:5335/udp"

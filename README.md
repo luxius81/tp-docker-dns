@@ -59,7 +59,7 @@ Bash
             docker compose up -d
 
 ## 5. Accesos y Paneles Web
-        Interfaz de Pi-hole: http://localhost:8080 (Contraseña configurada en .env)
+        Interfaz de Pi-hole: http://localhost:8080/admin (Contraseña configurada en .env)
 
         Dashboard del Reporter: http://localhost:8081
 
