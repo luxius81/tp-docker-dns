@@ -14,7 +14,7 @@ El objetivo es proporcionar un servicio DNS seguro que:
 
 ## 2. Arquitectura de Servicios
 
-```text
+```
                                ┌────────────────────────────────────────────────────────────┐
                                │                     RED DOCKER: dns-net                    │
                                │                                                            │
@@ -27,11 +27,13 @@ El objetivo es proporcionar un servicio DNS seguro que:
    Port 8081 (Reportes)        │   │   Reporter   │                                         │
                                │   └──────────────┘                                         │
                                └────────────────────────────────────────────────────────────┘
-
+```
 
 ## 3. Prerrequisitos y preparacion del Host
 Antes de desplegar los contenedores en Ubuntu/Debian, es necesario liberar el puerto 53 que ocupa por defecto el servicio systemd-resolved:
+```
 Bash
+
     # 1. Desactivar el Stub Listener de systemd-resolved
          sudo sed -i 's/^#\?DNSStubListener=.*/DNSStubListener=no/' /etc/systemd/resolved.conf
 
@@ -43,7 +45,7 @@ Bash
 
     # 4. Verificar que el puerto 53 esté libre (no debe devolver resultados)
          sudo ss -tulpn | grep -E ':53[[:space:]]'
-
+```
 ## 4. Despliegue de infraestructura
     # 1. Clonar el repositorio
             git clone [https://github.com/luxius81/tp-docker-dns.git](https://github.com/luxius81/tp-docker-dns.git)
@@ -94,7 +96,9 @@ Para que todas las aplicaciones del sistema operativo resuelvan nombres de domin
 
 ## 8. Detencion y limpieza
 Para detener la infraestructura y limpiar los recursos generados:
+
     # Detener los contenedores y remover la red interna
+    
         sudo docker compose down
 
     # Eliminar imágenes locales generadas (incluyendo la del Reporter)
