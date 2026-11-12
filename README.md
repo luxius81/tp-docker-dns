@@ -78,7 +78,21 @@ Bash
             # Prueba 2: Dominio legítimo (Debe devolver la IP real)
                 dig debian.org @127.0.0.1
 
-## 7. Detencion y limpieza
+## 7. Configurar Ubuntu y navegadores para usar Pi-hole
+
+El sistema operativo utiliza los servidores DNS asignados automáticamente por el router o el proveedor de internet (ISP). Para darle un uso real y cotidiano es necesario redirigir las consultas DNS de todo el sistema hacia nuestra instancia local.
+
+Para que todas las aplicaciones del sistema operativo resuelvan nombres de dominio a través de Pi-hole:
+
+1. Abrí la Configuración de red en Ubuntu
+2. Hacé clic en el ícono del engranaje junto a tu conexión activa.
+3. Ingresá a la pestaña IPv4.
+4. En el apartado DNS, desactivá el interruptor Automático para evitar que el DHCP del router sobrescriba la configuración.
+5. En el campo de texto Servidores DNS, ingresá la dirección local:
+   127.0.0.1
+6. En el navegador (Firefox, Chrome) segurarse de tener desactivado DNS sobre HTTPS (DoH)
+
+## 8. Detencion y limpieza
 Para detener la infraestructura y limpiar los recursos generados:
     # Detener los contenedores y remover la red interna
         sudo docker compose down
