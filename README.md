@@ -56,7 +56,7 @@ Bash
             nano .env
 
     # 3. Levantar los servicios con Docker Compose
-            docker compose up -d
+           sudo docker compose up -d
 
 ## 5. Accesos y Paneles Web
         Interfaz de Pi-hole: http://localhost:8080/admin (Contraseña configurada en .env)
