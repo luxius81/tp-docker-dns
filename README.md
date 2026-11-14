@@ -48,7 +48,7 @@ Bash
 ```
 ## 4. Despliegue de infraestructura
     # 1. Clonar el repositorio
-            git clone [https://github.com/luxius81/tp-docker-dns.git](https://github.com/luxius81/tp-docker-dns.git)
+            git clone https://github.com/luxius81/tp-docker-dns.git
             cd tp-docker-dns
 
     # 2. Configurar las variables de entorno
