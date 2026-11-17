@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
  
   pihole:
-    image: pihole/pihole:2026.10.0         # fijar versión antes de entregar
+    image: pihole/pihole:2026.10.0        
     ports:
       - "53:53/tcp"
       - "53:53/udp"
