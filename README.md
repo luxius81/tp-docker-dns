@@ -71,7 +71,7 @@ Bash
                 dig dnssec.works @127.0.0.1 -p 5335 +dnssec
 
             # Prueba 2: Dominio con firma DNSSEC alterada/inválida (Debe responder SERVFAIL)
-                dig fail01.dnssec.works @127.0.0.1 -p 5335
+                dig dnssec-failed.org @127.0.0.1 -p 5335
 
     # 2. Bloqueo y Resolución en Pi-hole
             # Prueba 1: Dominio de publicidad (Debe responder 0.0.0.0)
