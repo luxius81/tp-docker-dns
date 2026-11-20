@@ -1,3 +1,4 @@
 .env
 etc-pihole/
-
+__pycache__/
+*.pyc
