@@ -32,7 +32,6 @@ El objetivo es proporcionar un servicio DNS seguro que:
 ## 3. Prerrequisitos y preparacion del Host
 Antes de desplegar los contenedores en Ubuntu/Debian, es necesario liberar el puerto 53 que ocupa por defecto el servicio systemd-resolved:
 ```
-Bash
 
     # 1. Desactivar el Stub Listener de systemd-resolved
          sudo sed -i 's/^#\?DNSStubListener=.*/DNSStubListener=no/' /etc/systemd/resolved.conf
